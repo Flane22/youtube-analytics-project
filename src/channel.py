@@ -41,6 +41,18 @@ class Channel:
         return self.channel['items'][0]['snippet']['thumbnails']['default']['url']
 
     @property
+    def description(self):
+        return self.channel["items"][0]["snippet"]["description"]
+
+    @property
+    def subscriber_count(self):
+        return self.channel["items"][0]["statistics"]["subscriberCount"]
+
+    @property
+    def view_count(self):
+        return self.channel["items"][0]["statistics"]["viewCount"]
+
+    @property
     def channel_id(self):
         return self.__channel_id
 
