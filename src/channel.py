@@ -34,7 +34,7 @@ class Channel:
 
     @property
     def video_count(self):
-        return self.channel['items'][0]['statistics']['videoCount']
+        return int(self.channel['items'][0]['statistics']['videoCount'])
 
     @property
     def url(self):
@@ -46,11 +46,11 @@ class Channel:
 
     @property
     def subscriber_count(self):
-        return self.channel["items"][0]["statistics"]["subscriberCount"]
+        return int(self.channel["items"][0]["statistics"]["subscriberCount"])
 
     @property
     def view_count(self):
-        return self.channel["items"][0]["statistics"]["viewCount"]
+        return int(self.channel["items"][0]["statistics"]["viewCount"])
 
     @property
     def channel_id(self):
@@ -59,3 +59,25 @@ class Channel:
     @classmethod
     def get_service(cls):
         return cls.__youtube
+
+    def __str__(self):
+        return f"{self.title} {self.url}"
+
+    def __add__(self, other):
+        return self.subscriber_count + other.subscriber_count
+
+    def __sub__(self, other):
+        return self.subscriber_count - other.subscriber_count
+
+    def __gt__(self, other):
+        return self.subscriber_count > other.subscriber_count
+
+    def __ge__(self, other):
+        return self.subscriber_count >= other.subscriber_count
+
+    def __lt__(self, other):
+        return self.subscriber_count < other.subscriber_count
+
+    def __le__(self, other):
+        return self.subscriber_count <= other.subscriber_count
+
